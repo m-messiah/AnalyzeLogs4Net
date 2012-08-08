@@ -11,7 +11,7 @@ namespace RequestsPerHour
 		private readonly Regex path;
 		private readonly Regex fullpath;
 		private readonly Regex time;
-		private readonly Regex boxId; //It is a parameter of request
+		private readonly Regex arg; //It is a argument of request
 		private readonly Regex ip;
 
 		public Program()
@@ -19,8 +19,8 @@ namespace RequestsPerHour
 			path = new Regex(@":27183(\/[\/\w\d]+)[\?\s]");
 			fullpath = new Regex(@":27183(\/[\/\S]+)\s");
 			time = new Regex(@"\s(\d\d:\d\d:\d\d,\d\d\d)\s");
-			boxId = new Regex(@"boxId\=([\da-f\-]+)[\@\&$\s]");
-			ip = new Regex(@"\s([\d{1,3}\.]{3}\d{1,3})\s");
+			arg = new Regex(@"boxId\=([\da-f\-]+)[\@\&$\s]");
+			ip = new Regex(@"\s(\d{1,3}\.){3}\d{1,3}\s");
 		}
 
 		private static void Main(string[] args)
@@ -30,26 +30,27 @@ namespace RequestsPerHour
 		}
 		private void Run()
 		{
-			ByFullPath();
 			ByIp();
+			ByFullPath();
 			ByPath();
-			ByBox();
+			ByArg();
 		}
 
-		private void ByBox()
+		private void ByArg()
 		{
 			var hash = new Dictionary<Int64, Dictionary<String, Int64>>();
-			var log = new StreamReader(@"../../actions_2012-08-06");
+			//var log = new StreamReader(@"../../actions_2012-08-06");
+			var log = new StreamReader(@"../../actions");
 			var boxes = new SortedSet<String>();
 			var i = 0.0;
-			Console.WriteLine("ByBox");
+			Console.WriteLine("\nByArg");
 			while (!log.EndOfStream)
 			{
 				Console.Write("\r{0,2:f}%", i * 100 / 6327965);
 				i++;
 				var line = log.ReadLine();
 				if (line == null) continue;
-				var bm = boxId.Match(line);
+				var bm = arg.Match(line);
 				if (!bm.Success) continue;
 				var boxing = bm.Value.Replace("boxId=", "");
 				boxes.Add(boxing);
@@ -89,14 +90,12 @@ namespace RequestsPerHour
 				fil.Write("<th>{0}</th>", v);
 				for (var k = 0; k < 24; k++)
 				{
-					if (hash[k].ContainsKey(v))
+					if (hash.ContainsKey(k) && hash[k].ContainsKey(v))
 					{
 						fil.Write("<td>{0}</td>", hash[k][v]);
+						continue;
 					}
-					else
-					{
-						fil.Write("<td></td>");
-					}
+					fil.Write("<td></td>");
 				}
 				fil.WriteLine("</tr>");
 			}
@@ -110,7 +109,7 @@ namespace RequestsPerHour
 			var log = new StreamReader(@"../../actions_2012-08-06");
 			var paths = new SortedSet<String>();
 			var i = 0.0;
-			Console.WriteLine("ByPath");
+			Console.WriteLine("\nByPath");
 			while (!log.EndOfStream)
 			{
 				Console.Write("\r{0,2:f}%", i * 100 / 6327965);
@@ -157,14 +156,12 @@ namespace RequestsPerHour
 				fil.Write("<th>{0}</th>", v);
 				for (var k = 0; k < 24; k++)
 				{
-					if (hash[k].ContainsKey(v))
+					if (hash.ContainsKey(k) && hash[k].ContainsKey(v))
 					{
 						fil.Write("<td>{0}</td>", hash[k][v]);
+						continue;
 					}
-					else
-					{
-						fil.Write("<td></td>");
-					}
+					fil.Write("<td></td>");
 				}
 				fil.WriteLine("</tr>");
 			}
@@ -178,7 +175,7 @@ namespace RequestsPerHour
 			var log = new StreamReader(@"../../actions_2012-08-06");
 			var ips = new SortedSet<String>();
 			var i = 0.0;
-			Console.WriteLine("ByIp");
+			Console.WriteLine("\nByIp");
 			while (!log.EndOfStream)
 			{
 				Console.Write("\r{0,2:f}%", i * 100 / 6327965);
@@ -187,7 +184,7 @@ namespace RequestsPerHour
 				if (line == null) continue;
 				var im = ip.Match(line);
 				if (!im.Success) continue;
-				var iping = im.Value.Trim();
+				var iping = im.Value;
 				ips.Add(iping);
 				var tm = time.Match(line);
 				if (!tm.Success) continue;
@@ -225,14 +222,12 @@ namespace RequestsPerHour
 				fil.Write("<th>{0}</th>", v);
 				for (var k = 0; k < 24; k++)
 				{
-					if (hash[k].ContainsKey(v))
-					{
-						fil.Write("<td>{0}</td>", hash[k][v]);
-					}
-					else
-					{
-						fil.Write("<td></td>");
-					}
+					if (hash.ContainsKey(k) && hash[k].ContainsKey(v))
+						{
+							fil.Write("<td>{0}</td>", hash[k][v]);
+							continue;
+						}
+					fil.Write("<td></td>");
 				}
 				fil.WriteLine("</tr>");
 			}
@@ -246,7 +241,7 @@ namespace RequestsPerHour
 			var log = new StreamReader(@"../../actions_2012-08-06");
 			var fullpaths = new SortedSet<String>();
 			var i = 0.0;
-			Console.WriteLine("ByFullPath");
+			Console.WriteLine("\nByFullPath");
 			while (!log.EndOfStream)
 			{
 				Console.Write("\r{0,2:f}%", i*100/6327965);
@@ -293,14 +288,12 @@ namespace RequestsPerHour
 				fil.Write("<th>{0}</th>", v);
 				for (var k = 0; k < 24; k++)
 				{
-					if (hash[k].ContainsKey(v))
+					if (hash.ContainsKey(k) && hash[k].ContainsKey(v))
 					{
 						fil.Write("<td>{0}</td>", hash[k][v]);
+						continue;
 					}
-					else
-					{
-						fil.Write("<td></td>");
-					}
+					fil.Write("<td></td>");
 				}
 				fil.WriteLine("</tr>");
 			}

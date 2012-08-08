@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RequestsPerHour", "AnalyzeLogs4Net\RequestsPerHour.csproj", "{FC244C87-BE6F-4E9B-9788-5E2C976DF29F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RequestsPerHour", "RequestsPerHour\RequestsPerHour.csproj", "{FC244C87-BE6F-4E9B-9788-5E2C976DF29F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

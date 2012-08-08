@@ -1,0 +1,7 @@
+AnalyzeLog4Net
+
+It`s a collection of tools for analyze log4net files from servers.
+
+Part of format of log4net file is described in file log4net_config.part.xml
+
+Other information look in the tools folders.

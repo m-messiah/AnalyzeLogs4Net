@@ -1,0 +1,4 @@
+RequestsPerHour
+
+This tool analyze log4net log-file with requests to server (actions-file) for 1 day,
+and construct a html-table, where for each hour and for each path, requested on server, presented count of requests.

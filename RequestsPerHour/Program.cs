@@ -76,7 +76,7 @@ namespace RequestsPerHour
 				}
 			}
 
-			var fil = new StreamWriter(@"../../Results/byBoxes.html");
+			var fil = new StreamWriter(@"../../Results/byArg.html");
 			fil.WriteLine(boxes.Count);
 			fil.Write("<table border=1 style='border-collapse: collapse;'><tr><th>BoxId</th>");
 			for (var t = 0; t < 24; t++)

@@ -141,7 +141,6 @@ build
 eggs
 parts
 bin
-var
 sdist
 develop-eggs
 .installed.cfg
@@ -161,3 +160,8 @@ pip-log.txt
 
 # Mac crap
 .DS_Store
+
+############
+# Privacy
+############
+*actions*

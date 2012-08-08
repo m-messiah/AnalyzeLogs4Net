@@ -39,8 +39,7 @@ namespace RequestsPerHour
 		private void ByArg()
 		{
 			var hash = new Dictionary<Int64, Dictionary<String, Int64>>();
-			//var log = new StreamReader(@"../../actions_2012-08-06");
-			var log = new StreamReader(@"../../actions");
+			var log = new StreamReader(@"../../actions_2012-08-06");
 			var boxes = new SortedSet<String>();
 			var i = 0.0;
 			Console.WriteLine("\nByArg");
@@ -52,7 +51,7 @@ namespace RequestsPerHour
 				if (line == null) continue;
 				var bm = arg.Match(line);
 				if (!bm.Success) continue;
-				var boxing = bm.Value.Replace("boxId=", "");
+				var boxing = bm.Value.Replace("boxId=", "").Replace("@","").Replace("&","").Replace("$","").Trim();
 				boxes.Add(boxing);
 				var tm = time.Match(line);
 				if (!tm.Success) continue;

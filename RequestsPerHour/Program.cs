@@ -1,19 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Text.RegularExpressions;
 
 namespace RequestsPerHour
 {
-	internal class Program
+	class Program
 	{
-
 		private readonly Regex path;
 		private readonly Regex fullpath;
 		private readonly Regex time;
 		private readonly Regex arg; //It is a argument of request
 		private readonly Regex ip;
+		private const string LogFile = @"../../actions_2012-08-06";
 
 		public Program()
 		{
@@ -24,7 +23,7 @@ namespace RequestsPerHour
 			ip = new Regex(@"\s(\d{1,3}\.){3}\d{1,3}\s");
 		}
 
-		private static void Main(string[] args)
+		private static void Main()
 		{
 			var p = new Program();
 			p.Run();
@@ -40,7 +39,7 @@ namespace RequestsPerHour
 		private void ByArg()
 		{
 			var hash = new Dictionary<Int64, Dictionary<String, Int64>>();
-			var log = new StreamReader(@"../../actions_2012-08-06");
+			var log = new StreamReader(LogFile);
 			var boxes = new SortedSet<String>();
 			var i = 0.0;
 			Console.WriteLine("\nByArg");
@@ -106,7 +105,7 @@ namespace RequestsPerHour
 		private void ByPath()
 		{
 			var hash = new Dictionary<Int64, Dictionary<String, Int64>>();
-			var log = new StreamReader(@"../../actions_2012-08-06");
+			var log = new StreamReader(LogFile);
 			var paths = new SortedSet<String>();
 			var i = 0.0;
 			Console.WriteLine("\nByPath");
@@ -172,7 +171,7 @@ namespace RequestsPerHour
 		private void ByIp()
 		{
 			var hash = new Dictionary<Int64, Dictionary<String, Int64>>();
-			var log = new StreamReader(@"../../actions_2012-08-06");
+			var log = new StreamReader(LogFile);
 			var ips = new SortedSet<String>();
 			var i = 0.0;
 			Console.WriteLine("\nByIp");
@@ -238,7 +237,7 @@ namespace RequestsPerHour
 		private void ByFullPath()
 		{
 			var hash = new Dictionary<Int64, Dictionary<String, Int64>>();
-			var log = new StreamReader(@"../../actions_2012-08-06");
+			var log = new StreamReader(LogFile);
 			var fullpaths = new SortedSet<String>();
 			var i = 0.0;
 			Console.WriteLine("\nByFullPath");

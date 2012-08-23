@@ -1,6 +1,6 @@
 ﻿
-Microsoft Visual Studio Solution File, Format Version 11.00
-# Visual Studio 2010
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RequestsPerHour", "RequestsPerHour\RequestsPerHour.csproj", "{FC244C87-BE6F-4E9B-9788-5E2C976DF29F}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{7512EF6D-A87C-4640-A176-3C91743189E0}"
@@ -12,16 +12,22 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FilterIndex", "FilterIndex\
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
 		Debug|x86 = Debug|x86
+		Release|Any CPU = Release|Any CPU
 		Release|x86 = Release|x86
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{FC244C87-BE6F-4E9B-9788-5E2C976DF29F}.Debug|Any CPU.ActiveCfg = Debug|x86
 		{FC244C87-BE6F-4E9B-9788-5E2C976DF29F}.Debug|x86.ActiveCfg = Debug|x86
 		{FC244C87-BE6F-4E9B-9788-5E2C976DF29F}.Debug|x86.Build.0 = Debug|x86
+		{FC244C87-BE6F-4E9B-9788-5E2C976DF29F}.Release|Any CPU.ActiveCfg = Release|x86
 		{FC244C87-BE6F-4E9B-9788-5E2C976DF29F}.Release|x86.ActiveCfg = Release|x86
 		{FC244C87-BE6F-4E9B-9788-5E2C976DF29F}.Release|x86.Build.0 = Release|x86
+		{979D32CD-EA5C-4ECF-81F6-78BD13AE127D}.Debug|Any CPU.ActiveCfg = Debug|x86
 		{979D32CD-EA5C-4ECF-81F6-78BD13AE127D}.Debug|x86.ActiveCfg = Debug|x86
 		{979D32CD-EA5C-4ECF-81F6-78BD13AE127D}.Debug|x86.Build.0 = Debug|x86
+		{979D32CD-EA5C-4ECF-81F6-78BD13AE127D}.Release|Any CPU.ActiveCfg = Release|x86
 		{979D32CD-EA5C-4ECF-81F6-78BD13AE127D}.Release|x86.ActiveCfg = Release|x86
 		{979D32CD-EA5C-4ECF-81F6-78BD13AE127D}.Release|x86.Build.0 = Release|x86
 	EndGlobalSection
